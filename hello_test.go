@@ -12,7 +12,7 @@ func TestHello(t *testing.T) {
 
 	t.Run("saying hello to people", func(t *testing.T) {
 		//Получил по факту
-		got := Hello("Chris")
+		got := Hello("Chris", "")
 		//Ожидаю
 		want := "Hello, Chris"
 
@@ -21,9 +21,27 @@ func TestHello(t *testing.T) {
 
 	t.Run("saying 'Hello, World!' when an empty string is supplied", func(t *testing.T) {
 		//Получил по факту
-		got := Hello("")
+		got := Hello("", "")
 		//Ожидалось
 		want := "Hello, World"
+
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("in Spanish", func(t *testing.T) {
+		//Получено
+		got := Hello("Elodie", "Spanish")
+		//Ожидалось
+		want := "Hola, Elodie"
+
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("in French", func(t *testing.T) {
+		//Получено
+		got := Hello("Marta", "French")
+		//Ожидалось
+		want := "Bonjour, Marta"
 
 		assertCorrectMessage(t, got, want)
 	})
