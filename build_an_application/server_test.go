@@ -24,7 +24,7 @@ func (s *StubPlayerStore) RecordWin(name string) {
 	s.winCalls = append(s.winCalls, name)
 }
 
-func (p *StubPlayerStore) GetLeague() []Player {
+func (p *StubPlayerStore) GetLeague() League {
 	return p.league
 }
 
@@ -176,6 +176,7 @@ func assertStatus(t testing.TB, got, want int) {
 }
 
 func assertLeague(t testing.TB, got, wantedLeague []Player) {
+	t.Helper()
 	if !reflect.DeepEqual(got, wantedLeague) {
 		t.Errorf("got %v, want %v", got, wantedLeague)
 	}
