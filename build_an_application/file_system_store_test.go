@@ -1,4 +1,4 @@
-package main
+package poker
 
 import (
 	"io/ioutil"
@@ -111,18 +111,4 @@ func createTempFile(t testing.TB, initialData string) (*os.File, func()) {
 	}
 
 	return tmpfile, removeFile
-}
-
-func assertScoreEquals(t testing.TB, got, want int) {
-	t.Helper()
-	if got != want {
-		t.Errorf("got %d, want %d", got, want)
-	}
-}
-
-func assertNoError(t testing.TB, err error) {
-	t.Helper()
-	if err != nil {
-		t.Fatalf("didn't expect an error but got one, %v", err)
-	}
 }
